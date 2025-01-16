@@ -1,0 +1,9 @@
+{
+	"crawlerPhases": [ "editais"],
+	
+	"dataDir": "data",
+	
+	"delayToRequest": 150,
+	"maxDelayVariation": 150,
+	"restartLogs": true
+}

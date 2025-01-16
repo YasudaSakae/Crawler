@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+	<Properties>
+		<Property name="basePath">./</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m%n"/>
+		</Console>
+		<RollingFile name="fileLogger"
+			fileName="${basePath}/crawler.log"
+			filePattern="${basePath}/crawler.log">
+			<PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="fileLogger" additivity="false">
+			<AppenderRef ref="fileLogger" />
+		</Logger>
+		<Logger name="console" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="org.apache.http.client.protocol" level="OFF"/>
+		<Root level="info" additivity="false">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="fileLogger" />
+		</Root>
+	</Loggers>
+</Configuration>
